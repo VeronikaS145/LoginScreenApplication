@@ -40,12 +40,37 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addGradientLayer(topColor: firstColor, bottomColor: secondColor)
+        
+        // Использовала force-unwrapping, тк закоментированный код не устанавливает иконки почему-то
+        usernameTextField.setLeftIcon(UIImage(named: "user")!)
+        passwordTextField.setLeftIcon(UIImage(named: "pass")!)
+        // setIcon()
+        
+        setLayer([loginButton, facebookButton, twitterButton])
+        
+        loginButton.setShadow(loginButton)
+        facebookButton.setShadow(facebookButton)
+        twitterButton.setShadow(twitterButton)
     }
 
     // MARK: - Actions
     
+    private func setLayer(_ buttons: [UIButton]) {
+        buttons.forEach { button in
+            button.layer.cornerRadius = 15
+        }
+    }
     
-
+//    private func setIcon() {
+//        if let imageUserIcon = UIImage(systemName: "user") {
+//            usernameTextField.setLeftIcon(imageUserIcon)
+//        }
+//
+//        if let imagePasswordIcon = UIImage(systemName: "pass") {
+//            passwordTextField.setLeftIcon(imagePasswordIcon)
+//        }
+//    }
+    
 }
 
 // MARK: - Extensions
@@ -59,5 +84,27 @@ extension UIView {
         gradient.startPoint = CGPoint(x: 0, y: 0)
         gradient.endPoint = CGPoint(x: 0, y: 1)
         layer.insertSublayer(gradient, at: 0)
+    }
+}
+
+extension UITextField {
+    func setLeftIcon(_ image: UIImage) {
+        let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
+        iconView.image = image
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
+        iconContainerView.addSubview(iconView)
+        leftView = iconContainerView
+        leftViewMode = .always
+    }
+}
+
+extension UIButton {
+    func setShadow(_ button: UIButton) {
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.2
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 10
+        button.layer.shouldRasterize = true
+        button.layer.rasterizationScale = UIScreen.main.scale
     }
 }
