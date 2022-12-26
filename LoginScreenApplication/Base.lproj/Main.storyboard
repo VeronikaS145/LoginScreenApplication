@@ -165,6 +165,13 @@
                             <constraint firstItem="Rpz-2h-8ya" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="xJm-IS-8pE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="facebookButton" destination="x0X-NG-frx" id="vPX-vp-Oh3"/>
+                        <outlet property="loginButton" destination="DTn-Yf-IdO" id="Tb2-Yp-Yu7"/>
+                        <outlet property="passwordTextField" destination="dMz-nG-aoT" id="gg2-hi-3S3"/>
+                        <outlet property="twitterButton" destination="z0N-Vv-Gjr" id="LqN-jT-mgX"/>
+                        <outlet property="usernameTextField" destination="OD6-I7-90I" id="kkQ-GP-lMM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
