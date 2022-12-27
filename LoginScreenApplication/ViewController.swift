@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     // MARK: - Outlets
     
     @IBOutlet weak var usernameTextField: UITextField!
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         alpha: 0.7
     )
     
-   // MARK: - Lifecycle
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +51,10 @@ class ViewController: UIViewController {
         loginButton.setShadow(loginButton)
         facebookButton.setShadow(facebookButton)
         twitterButton.setShadow(twitterButton)
+        
+        hideKeyboard()
     }
-
+    
     // MARK: - Actions
     
     private func setLayer(_ buttons: [UIButton]) {
@@ -61,15 +63,25 @@ class ViewController: UIViewController {
         }
     }
     
-//    private func setIcon() {
-//        if let imageUserIcon = UIImage(systemName: "user") {
-//            usernameTextField.setLeftIcon(imageUserIcon)
-//        }
-//
-//        if let imagePasswordIcon = UIImage(systemName: "pass") {
-//            passwordTextField.setLeftIcon(imagePasswordIcon)
-//        }
-//    }
+    // Hide keyboard using a tap gesture
+    @objc func hideKeyboard() {
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
+        self.view.endEditing(true)
+    }
+    
+    
+    //    private func setIcon() {
+    //        if let imageUserIcon = UIImage(systemName: "user") {
+    //            usernameTextField.setLeftIcon(imageUserIcon)
+    //        }
+    //
+    //        if let imagePasswordIcon = UIImage(systemName: "pass") {
+    //            passwordTextField.setLeftIcon(imagePasswordIcon)
+    //        }
+    //    }
     
 }
 
